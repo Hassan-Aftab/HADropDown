@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var dropDown: HADropDown!
     override func viewDidLoad() {
         super.viewDidLoad()
-        dropDown.items = ["yo", "hello"]
+        dropDown.items = ["Cat", "Mouse", "Horse", "Elephant", "Dog", "Zebra"]
         
     }
 
@@ -25,3 +25,8 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: HADropDownDelegate {
+    func didSelectItem(dropDown: HADropDown, at index: Int) {
+        print("Item selected at index \(index)")
+    }
+}

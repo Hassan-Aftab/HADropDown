@@ -8,11 +8,23 @@
 
 import UIKit
 
-protocol HADropDownDelegate {
+protocol HADropDownDelegate: class {
     func didSelectItem(dropDown: HADropDown, at index: Int)  
     func didShow(dropDown: HADropDown) 
     func didHide(dropDown: HADropDown) 
     
+}
+
+extension HADropDownDelegate {
+    func didSelectItem(dropDown: HADropDown, at index: Int) {
+        
+    }
+    func didShow(dropDown: HADropDown)  {
+        
+    }
+    func didHide(dropDown: HADropDown)  {
+        
+    }
 }
 
 @IBDesignable
@@ -126,7 +138,7 @@ class HADropDown: UIView {
     fileprivate var selectedFont = UIFont.systemFont(ofSize: 14)
     
     var items = [String]()
-    fileprivate var selectedIndex = 0
+    fileprivate var selectedIndex = -1
     
     var isCollapsed = true
     private var table = UITableView()
@@ -150,6 +162,10 @@ class HADropDown: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        self.layer.cornerRadius = 4
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderWidth = 1
         
         label.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         self.addSubview(label)

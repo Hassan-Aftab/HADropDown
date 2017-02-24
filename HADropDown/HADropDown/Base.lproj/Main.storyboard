@@ -24,12 +24,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JL-dl-GGG" customClass="HADropDown" customModule="HADropDown" customModuleProvider="target">
                                 <rect key="frame" x="31" y="35" width="313" height="40"/>
-                                <color key="backgroundColor" red="0.14901960780000001" green="0.47058823529999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="mYU-Tv-cLQ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Select A Value"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Select an Animal"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="itemHeight">
                                         <real key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
@@ -37,16 +37,16 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="itemBackground">
-                                        <color key="value" red="0.14901960780000001" green="0.47058823529999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="itemTextColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="titleFontSize">
                                         <real key="value" value="14"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="itemFontSize">
-                                        <real key="value" value="15"/>
+                                        <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
