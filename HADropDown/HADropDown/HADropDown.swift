@@ -175,11 +175,22 @@ class HADropDown: UIView {
         self.addGestureRecognizer(tapGesture)
         table.delegate = self
         table.dataSource = self
+        var rootView = self.superview
         
-        self.table.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y + self.frame.height+5, width: self.frame.width, height: 0)
+        // here we getting top superview to add table on that.
+        while rootView?.superview != nil {
+        rootView = rootView?.superview
+       }
+      
+       let newFrame: CGRect = self.superview!.convert(self.frame, to: rootView)
+      self.tableFrame = newFrame
+      self.table.frame = CGRect(x: newFrame.origin.x, y: (newFrame.origin.y) + (newFrame.height)+5, width: (newFrame.width), height: 0)     
+        
         table.backgroundColor = itemBackgroundColor
     }
-    
+      // Default tableview frame
+      var tableFrame = CGRect.zero
+
     func didTapBackground(gesture: UIGestureRecognizer) {
         isCollapsed = true
         collapseTableView()
@@ -195,15 +206,20 @@ class HADropDown: UIView {
             self.table.layer.borderColor = UIColor.lightGray.cgColor
             self.table.layer.borderWidth = 1
             self.table.layer.cornerRadius = 4
-            self.superview?.addSubview(self.table)
-            
-            self.table.reloadData()
+            var rootView = self.superview
+          // adding tableview to root view( we can say first view in hierarchy)
+           while rootView?.superview != nil {
+            rootView = rootView?.superview
+          }
+       
+          rootView?.addSubview(self.table)
+
+           self.table.reloadData()
             UIView.animate(withDuration: 0.25, animations: { 
-                self.table.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y + self.frame.height+5, width: self.frame.width, height: height)
-                
-                
-                
+                self.table.frame = CGRect(x: self.tableFrame.origin.x, y: self.tableFrame.origin.y + self.frame.height+5, width: self.frame.width, height: height)
+              
             })
+
             
             if delegate != nil {
                 delegate.didShow(dropDown: self)
@@ -223,9 +239,17 @@ class HADropDown: UIView {
     func collapseTableView() {
         
         if isCollapsed {
-            UIView.animate(withDuration: 0.25, animations: { 
-                self.table.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y+self.frame.height, width: self.frame.width, height: 0)
+            // removing tableview from rootview
+        UIView.animate(withDuration: 0.25, animations: { 
+                self.table.frame = CGRect(x: self.tableFrame.origin.x, y: self.tableFrame.origin.y+self.frame.height, width: self.frame.width, height: 0)
             })
+          var rootView = self.superview
+          
+          while rootView?.superview != nil {
+             rootView = rootView?.superview
+          }
+          
+          rootView?.viewWithTag(99121)?.removeFromSuperview()
             self.superview?.viewWithTag(99121)?.removeFromSuperview()
             if delegate != nil {
                 delegate.didHide(dropDown: self)
