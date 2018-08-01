@@ -226,8 +226,8 @@ class HADropDown: UIView {
             }
             let view = UIView(frame: UIScreen.main.bounds)
             view.tag = 99121
-            self.superview?.insertSubview(view, belowSubview: table)
-            
+            rootView?.insertSubview(view, belowSubview: table)
+
             tapGestureBackground = UITapGestureRecognizer(target: self, action: #selector(didTapBackground(gesture:)))
             view.addGestureRecognizer(tapGestureBackground)
         }
